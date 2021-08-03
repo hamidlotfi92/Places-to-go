@@ -1,0 +1,81 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap");
+html {
+  /* everytime we add padding to an element, it causes the page to strech.this prevents padding from add extra width or height to page */
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  /* vh=veiwprt height. next line means every time we use this  page it will use 100% of page height */
+  min-height: 100vh;
+  font-family: MonteCarlo, sans-serif;
+  background-color: #ffb779;
+}
+
+#header {
+  top: 0;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, 0%);
+  z-index: 1000;
+  background: #ffb779;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 40px;
+  letter-spacing: 5px;
+}
+h3 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10;
+  font-size: 20px;
+  letter-spacing: 5px;
+}
+
+/* Loader */
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+}
+.loader img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* unless we use next line to recenter the image in page, it will use it'stop-left corner to place in center */
+  transform: translate(-50%, -50%);
+}
+
+/* Image container */
+.image-container {
+  margin: 10px 30%;
+}
+
+.image-container img {
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Media queries */
+
+/* larg Smartphones */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+  }
+  .image-container {
+    margin: 10px;
+  }
+}
