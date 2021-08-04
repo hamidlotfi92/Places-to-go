@@ -1,5 +1,6 @@
 const imageContainer=document.querySelector("#image-container");
 const loader= document.querySelector("#loader");
+const mapContainer=document.querySelector("#map");
 
 // global variables
 let photoArray=[];
@@ -14,6 +15,7 @@ const imageLoaded=()=>{
         loader.hidden=true;
     }
 }
+
 // Attrebute Assinger
 const setAttrebutes=(element,attrebutes)=>{
     for(const key in attrebutes){
@@ -26,7 +28,7 @@ const displayInImg=()=>{
     totalImages=photoArray.length;
     // create img tag for each obkect in photoArray
     photoArray.forEach((photo)=>{
-        //create <a> element to link to unsplash
+        //create <a> element to link to google map
         const item=document.createElement('a');
         
         // Create <img> for photo
@@ -34,6 +36,15 @@ const displayInImg=()=>{
             href:photo.links.html,
             target:'_blank',
         })
+        if(photo.location.position.latitude){
+            
+
+            let locationUrl=`https://www.google.com/maps/search/?api=1&query=${photo.location.position.latitude}%2C${photo.location.position.longitude}`;
+            setAttrebutes(item,{
+                href:locationUrl,
+                target:'_blank',
+            });
+        }
         const img=document.createElement('img');
         setAttrebutes(img,{
             src:photo.urls.regular,
@@ -42,8 +53,10 @@ const displayInImg=()=>{
         })
         // Event listener to check if each photo is loaded
         img.addEventListener('load',imageLoaded);
+              
         // put the img inside <a>, then put them both in imageContainer
         item.appendChild(img); 
+        
         imageContainer.appendChild(item);
     });
 }
